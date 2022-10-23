@@ -51,13 +51,13 @@ def pregunta_02():
     """
 
     # Lea el archivo `gm_2008_region.csv` y asignelo al DataFrame `df`
-    df = pd.read_csv("gm_2008_region.csv", sep=",", thousands = None, decimal=".")
+    df = pd.read_csv("gm_2008_region.csv")
 
     # Asigne a la variable los valores de la columna `fertility`
-    y = df['life']
+    #y = df['life']
 
     # Asigne a la variable los valores de la columna `life`
-    X = df['fertility']
+    #X = df['fertility']
 
     # Imprima las dimensiones del DataFrame
     print(df.shape)
