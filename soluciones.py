@@ -54,16 +54,16 @@ def pregunta_02():
     df = pd.read_csv("gm_2008_region.csv", sep=",", thousands = None, decimal=".")
 
     # Asigne a la variable los valores de la columna `fertility`
-    X = df['life']
+    y = df['life']
 
     # Asigne a la variable los valores de la columna `life`
-    y = df['fertility']
+    X = df['fertility']
 
     # Imprima las dimensiones del DataFrame
     print(df.shape)
 
     # Imprima la correlación entre las columnas `life` y `fertility` con 4 decimales.
-    corr1 = np.corrcoef(X, y)
+    corr1 = np.corrcoef(df['life'], df['fertility'])
     print(round(corr1[0, 1], 4))
 
     # Imprima la media de la columna `life` con 4 decimales.
