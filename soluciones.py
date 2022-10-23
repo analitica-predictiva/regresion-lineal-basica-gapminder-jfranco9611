@@ -74,9 +74,9 @@ def pregunta_02():
     print(df['fertility'].__class__)
 
     # Imprima la correlación entre las columnas `GDP` y `life` con 4 decimales.
-    #corr2 = np.corrcoef(df['life'], df['GDP'])
-    #print(round(corr2[0, 1], 4))
-    print("{:.4f}".format(df['GDP'].corr(df['life'])))
+    corr2 = np.corrcoef(df['GDP'], df['life'])
+    print(round(corr2[0, 1], 3))
+    #print("{:.4f}".format(df['GDP'].corr(df['life'])))
 
 
 def pregunta_03():
