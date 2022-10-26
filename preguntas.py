@@ -18,8 +18,8 @@ def pregunta_01():
     df = pd.read_csv('gm_2008_region.csv')
 
     # Asigne la columna "life" a `y` y la columna "fertility" a `X`
-    y = df['life'].copy()
-    X = df['fertility'].copy()
+    y = df['life']
+    X = df['fertility']
 
     # Imprima las dimensiones de `y`
     print(y.shape)
@@ -75,16 +75,15 @@ def pregunta_03():
     df = pd.read_csv('gm_2008_region.csv')
 
     # Asigne a la variable los valores de la columna `fertility`
-    X_fertility = df['fertility'].copy()
+    X_fertility = df['fertility']
 
     # Asigne a la variable los valores de la columna `life`
-    y_life = df['life'].copy()
+    y_life = df['life']
 
-    # Importe LinearRegression
     from sklearn.linear_model import LinearRegression
 
     # Cree una instancia del modelo de regresión lineal
-    reg = LinearRegression()
+    LR = LinearRegression()
 
     # Cree El espacio de predicción. Esto es, use linspace para crear
     # un vector con valores entre el máximo y el mínimo de X_fertility
@@ -94,13 +93,13 @@ def pregunta_03():
     ).reshape(-1, 1)
 
     # Entrene el modelo usando X_fertility y y_life
-    reg.fit(X_fertility.values.reshape(-1, 1), y_life.values.reshape(-1, 1))
+    LR.fit(X_fertility.values.reshape(-1, 1), y_life.values.reshape(-1, 1))
 
     # Compute las predicciones para el espacio de predicción
-    y_pred = reg.predict(prediction_space)
+    y_pred = LR.predict(prediction_space)
 
     # Imprima el R^2 del modelo con 4 decimales
-    print(reg.score(X_fertility.values.reshape(-1, 1), y_life.values.reshape(-1, 1)).round(4))
+    print(LR.score(X_fertility.values.reshape(-1, 1), y_life.values.reshape(-1, 1)).round(4))
 
 
 def pregunta_04():
@@ -109,9 +108,6 @@ def pregunta_04():
     Complete el código presentado a continuación.
     """
 
-    # Importe LinearRegression
-    # Importe train_test_split
-    # Importe mean_squared_error
     from sklearn.linear_model import LinearRegression
     from sklearn.model_selection import train_test_split
     from sklearn.metrics import mean_squared_error
@@ -120,10 +116,10 @@ def pregunta_04():
     df = pd.read_csv('gm_2008_region.csv')
 
     # Asigne a la variable los valores de la columna `fertility`
-    X_fertility = df['fertility'].copy()
+    X_fertility = df['fertility']
 
     # Asigne a la variable los valores de la columna `life`
-    y_life = df['life'].copy()
+    y_life = df['life']
 
     # Divida los datos de entrenamiento y prueba. La semilla del generador de números
     # aleatorios es 53. El tamaño de la muestra de entrenamiento es del 80%
@@ -144,6 +140,7 @@ def pregunta_04():
     y_pred = linearRegression.predict(X_test.values.reshape(-1, 1))
 
     # Compute and print R^2 and RMSE
-    print("R^2: {:6.4f}".format(linearRegression.score(X_test.values.reshape(-1, 1), y_test.values.reshape(-1, 1))))
+    print("R^2: {:6.4f}".format(linearRegression.score(X_test.values.reshape(-1, 1), 
+        y_test.values.reshape(-1, 1))))
     rmse = mean_squared_error(y_test, y_pred, squared = False)
     print("Root Mean Squared Error: {:6.4f}".format(rmse))
